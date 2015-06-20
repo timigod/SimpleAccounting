@@ -1,0 +1,102 @@
+<footer class="panel-footer bg-white">
+	<div class="row text-center no-gutter">
+		<div class="col-xs-3 b-r b-light">
+			<p class="h3 <%= is_amount_in_the_red?(Transaction.money_in_hand) %> font-bold m-t">
+				<%= number_to_currency(Transaction.money_in_hand, :unit => "₦") %>
+			</p>
+			<p class="text-muted">
+				Money in hand
+			</p>
+		</div>
+		<div class="col-xs-3 b-r b-light">
+			<p class="h3 text-danger font-bold m-t">
+				<%= number_to_currency(OutstandingTransaction.total_debt, :unit => "₦") %>
+			</p>
+			<p class="text-muted">
+				Total Debt
+			</p>
+		</div>
+		<div class="col-xs-3 b-r b-light">
+			<p class="h3 text-success font-bold m-t">
+				<%= number_to_currency(OutstandingTransaction.total_credit, :unit => "₦") %>
+			</p>
+			<p class="text-muted">
+				Total Credit
+			</p>
+		</div>
+		<div class="col-xs-3">
+			<p class="h3 <%= is_amount_in_the_red?(Transaction.money_in_hand - OutstandingTransaction.net_outstanding) %> font-bold m-t">
+				<%= number_to_currency((Transaction.money_in_hand - OutstandingTransaction.net_outstanding), :unit => "₦") %>
+			</p>
+			<p class="text-muted">
+				Net Balance
+			</p>
+		</div>
+	</div>
+</footer>
+<br/>
+<section class="panel panel-default">
+	<header class="panel-heading">
+		Transactions
+		<span class="pull-right"> <a style="margin:10px" href="<%= categories_path %>" class="label label-warning"> <i class="fa fa-cogs"></i> Manage Transaction Catedories </a>
+			 <a href="<%= new_transaction_path %>" data-toggle="modal" data-target="#formModal"  class="label label-success"> <i class="fa fa-plus"></i> Add New </a> </span>
+	</header>
+	<div class="table-responsive">
+		<table class="table table-striped b-t b-light">
+			<thead>
+				<tr>
+					<th width="200">Amount</th>
+					<th width="100">Kind</th>
+					<th width="200">Category</th>
+					<th>Description</th>
+					<th width="120">Date</th>
+					<th width="80"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @transactions.each do |transaction| %>
+				<tr>
+					<td><%= number_to_currency(transaction.amount, :unit => "₦") %></td>
+					<td><%= transaction.kind.capitalize %></td>
+					<td><%= transaction.category.name %></td>
+					<td><%= transaction.description %></td>
+					<td><%= transaction.date.strftime("%b %d, %Y") %></td>
+					<td><a data-toggle="modal" href="<%= edit_transaction_path(transaction) %>" data-target="#formModal" style="margin: 10px"><i class="glyphicon glyphicon-pencil text-info"></i></a><a data-confirm="Are you sure you want to delete this Transaction" data-method="delete" href="transactions/<%= transaction.id %>"><i class="glyphicon glyphicon-trash text-danger"></i></a></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<footer class="panel-footer">
+		<div class="row">
+			<div class="page_info col-sm-4 text-center">
+				<div class="page_info">
+					<%= page_entries_info @transactions %>
+				</div>
+			</div>
+			<div class="flickr_pagination col-sm-4 text-center text-center-xs">
+				<%= will_paginate @transactions, :container => false %>
+			</div>
+		</div>
+	</footer>
+</section>
+
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content"></div>
+	</div>
+</div>
+
+<style>
+	.datepicker {
+		z-index: 1151 !important;
+	}
+</style>
+<script>
+	$(function() {
+		$('#formModal').on('hidden.bs.modal', function() {
+			$(this).removeData('bs.modal');
+		});
+	}); 
+</script>
+

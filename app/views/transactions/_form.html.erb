@@ -1,0 +1,41 @@
+<%= form_for(@transaction, :html => {:class => "form-horizontal", :data =>{:validate => "parsely"}}) do |f| %>
+<div class="modal-body">
+	<div class="form-group">
+		<div class="col-sm-4">
+			<label>Amount</label>
+			<div class="input-group m-b">
+				<span class="input-group-addon">₦</span>
+				<%= f.text_field :amount, :data => {:type => "number", :required => "true"}, :class => "form-control", :placeholder => "Amount" %>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<label>Type</label>
+			<%= f.select(:kind, Transaction.kind.map { |value| [ value.capitalize, value ] }, {:prompt => "Kind"}, {:class => "form-control", :data => {:required => "true"}}) %>
+		</div>
+		<div class="col-sm-4">
+			<label>Date</label>
+			<%= f.text_field :date, :class => "form-control datepicker-input", :placeholder => "DD-MM-YYYY", "data-date-format" => "dd-mm-yyyy" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-12">
+			<label>Category</label>
+			<%= f.collection_select :category_id, Category.order(:name),:id,:name, {:prompt => "Category"}, {:class => "form-control", :data => {:required => "true"}} %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-12">
+			<label>Description</label>
+			<%= f.text_area :description, :rows => "3",:class => "form-control", :placeholder => "Transaction Description", :data => {:minwords => "6", :required => "6"}%>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">
+		Close
+	</button>
+	<button type="submit" class="btn btn-success">
+		<i class="i i-publish"></i> Save changes
+	</button>
+</div>
+<% end %>

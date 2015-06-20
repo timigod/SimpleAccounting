@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+	<head>
+		<meta charset="utf-8" />
+		<title>Simple Accounting</title>
+		<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<!--[if lt IE 9]>
+		<script src="js/ie/html5shiv.js"></script>
+		<script src="js/ie/respond.min.js"></script>
+		<script src="js/ie/excanvas.js"></script>
+		<![endif]-->
+	</head>
+	<body class="" >
+		<script type="text/javascript">
+			setTimeout(function() {
+				$('.alert').fadeOut('fast');
+			}, 5000);
+			// <-- time in milliseconds
+		</script>
+		<section class="vbox">
+			<header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+				<div class="navbar-header aside-md dk">
+					<a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html"> <i class="fa fa-bars"></i> </a>
+					<a href="index.html" class="navbar-brand"> <img src="<%= asset_path 'logo.png' %>" class="m-r-sm" alt="scale"> <span class="hidden-nav-xs">Accounting</span> </a>
+				</div>
+
+			</header>
+			<section>
+				<section class="hbox stretch">
+					<!-- .aside -->
+					<aside class="bg-black aside-md hidden-print hidden-xs" id="nav">
+						<section class="vbox">
+							<section class="w-f scrollable">
+								<div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+
+									<!-- nav -->
+									<nav class="nav-primary hidden-xs">
+										<div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">
+											Menu
+										</div>
+										<ul class="nav nav-main" data-ride="collapse">
+											<li <%= is_selected_nav_item?("transactions")%> <%= is_selected_nav_item?("categories")%>>
+												<a href="<%= transactions_path %>" class="auto"> <i class="i i-statistics icon"> </i> <span class="font-bold">Transactions Overview</span> </a>
+											</li>
+											<li <%= is_selected_nav_item?("outstanding_transactions")%>>
+												<a href="<%= outstanding_transactions_path %>" class="auto"> <i class="fa fa-money"> </i> <span class="font-bold">Debts and Credits</span> </a>
+											</li>
+											<!-- <li>
+												<a href="#" class="auto"> <i class="fa fa-users"> </i> <span class="font-bold">Users</span> </a>
+											</li> -->
+										</ul>
+									</nav>
+									<!-- / nav -->
+								</div>
+							</section>
+							
+
+							<footer class="footer hidden-xs no-padder text-center-nav-xs">
+								<%= link_to('<i class="i i-logout"></i>'.html_safe, destroy_user_session_path, :method => :delete, :class => "pull-right m-l-xs m-r-xs hidden-nav-xs btn btn-icon icon-muted btn-inactive", :data => { :confirm => "Are you sure you want to sign out?" }) %>
+								<a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs"> <i class="i i-circleleft text"></i> <i class="i i-circleright text-active"></i> </a>
+							</footer>
+						</section>
+					</aside>
+					<!-- /.aside -->
+					<section id="content">
+						<section class="vbox">
+							<section class="scrollable wrapper">
+								<!-- errors for transactions -->
+								<% if @transaction != nil %>
+								<% if @transaction.errors.any? %>
+								<div class="alert alert-danger">
+									<button type="button" class="close" data-dismiss="alert">
+										&times;
+									</button>
+									<p>
+										<%= pluralize(@transaction.errors.count, "error") %> stopped this transaction from being saved:
+										<ul>
+											<% @transaction.errors.full_messages.each do |message| %>
+											<li>
+												<%= message %>
+											</li>
+											<% end %>
+										</ul>
+									</p>
+								</div>
+								<% end %>
+								<% end %>
+								<% if notice != nil %>
+								<div class="alert alert-info">
+									<button type="button" class="close" data-dismiss="alert">
+										&times;
+									</button>
+									<%= notice %>
+								</div>
+								<% end %>
+
+								<%= yield %>
+							</section>
+						</section>
+						<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+					</section>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>
+
+

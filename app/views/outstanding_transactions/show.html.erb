@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @outstanding_transaction.amount %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @outstanding_transaction.description %>
+</p>
+
+<p>
+  <strong>Other party:</strong>
+  <%= @outstanding_transaction.other_party %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @outstanding_transaction.kind %>
+</p>
+
+<%= link_to 'Edit', edit_outstanding_transaction_path(@outstanding_transaction) %> |
+<%= link_to 'Back', outstanding_transactions_path %>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class=" ">
+	<head>
+		<meta charset="utf-8" />
+		<title>Simple Accounting</title>
+		<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<!--[if lt IE 9]>
+		<script src="js/ie/html5shiv.js"></script>
+		<script src="js/ie/respond.min.js"></script>
+		<script src="js/ie/excanvas.js"></script>
+		<![endif]-->
+	</head>
+	<body class="" >
+		<script type="text/javascript">
+			setTimeout(function() {
+				$('.alert-info').fadeOut('fast');
+			}, 5000);
+			// <-- time in milliseconds
+		</script>
+		<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
+			<div class="container aside-xl">
+				<a class="navbar-brand block" href="index.html">Simple Accounting</a>
+				<section class="m-b-lg">
+					<header class="wrapper text-center">
+						<strong>Authorization required (LOL)</strong>
+					</header>
+					<% if notice != nil %>
+					<div class="alert alert-info">
+						<button type="button" class="close" data-dismiss="alert">
+							&times;
+						</button>
+						<%= notice %>
+					</div>
+					<% end %>
+					<% if flash[:notice] %>
+					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert">
+							&times;
+						</button>
+						<%= flash[:notice] %>
+					</div>
+					<% end %>
+					<% if flash[:alert] %>
+					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert">
+							&times;
+						</button>
+						<%= flash[:alert] %>
+					</div>
+					<% end %>
+					<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+					<div class="list-group">
+						<div class="list-group-item">
+							<%= f.email_field :email, :class => "form-control no-border", :placeholder => "Email", autofocus: true %>
+						</div>
+						<div class="list-group-item">
+							<%= f.password_field :password, :class => "form-control no-border", :placeholder => "Password", autocomplete: "off" %>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-lg btn-primary btn-block">
+						Sign in
+					</button>
+					<%= render "devise/shared/links" %>
+					<% end -%>
+				</section>
+			</div>
+		</section>
+	</body>
+</html>
