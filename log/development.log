@@ -28334,3 +28334,151 @@ Processing by TransactionsController#index as HTML
   [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 1 OFFSET 0
   Rendered transactions/index.html.erb within layouts/main (24.6ms)
 Completed 200 OK in 121ms (Views: 113.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/transactions" for ::1 at 2015-06-22 18:31:31 +0100
+Processing by TransactionsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 25 OFFSET 0
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTransaction Load (0.2ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 1 OFFSET 0[0m
+  Rendered transactions/index.html.erb within layouts/main (26.5ms)
+Completed 200 OK in 130ms (Views: 123.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 18:31:36 +0100
+Processing by OutstandingTransactionsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.3ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.2ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.3ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (160.9ms)
+Completed 200 OK in 298ms (Views: 286.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 18:31:36 +0100
+Processing by OutstandingTransactionsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.8ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (28.9ms)
+Completed 200 OK in 164ms (Views: 151.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/font-awesome.self-fd86dd3b4df939cec9a94a8862a6711d6d94c005c192ab59e77a8961f47dd43b.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/bootstrap.self-0b03bd58c30d354a47291e8073071f95fd52340c908e8712eda9eecdd9102f44.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/css/animate.self-16c56b67d87ecc9bc9fdd2aecf6ad46e438451cb4c32c7cfe8bfda5e281dbad2.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/css/app.self-75c535cdc0c5b2569df06c712b33a475f8cd2766107dcda4552eef4bafd8dcf7.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/css/datepicker.self-a3c11abc6cafe253cdaf92adb7630ebef42dfe8478ce41f9c9d376b4686d9ad5.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/css/font.self-a5599c06964f81f02838282ee5e8f3ab4a0182eb9f104dbe629d18f06e0aacae.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/css/icon.self-3732bab0cde4d8421c9be8e28aaaa9528a0d829a182f46aa3fd8f8403d1df4b6.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/application.self-167193cd81d9330d9ddb5c4ec7b44214fea529aa8a94f3a86e6526e4f652fc02.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/css/landing.self-4924e8c637c8d4a12e42b6b00bd93de48d7719a0b1dc3dfa97c14689235f4286.css?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/app.self-106fd3e25852c5e9d6fa786f7a612c1c695388dc3d6cd7b21068e89e96e8c8fa.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/app.plugin.self-9e7d88d55864749b2f8bbae071305be458f066c62a066c84b3ab727c255ef6b4.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/bootstrap.self-3db49e444badb587f34991fa2cec1dd43ab2b86457dbe281d097fd579a595e22.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/jquery.slimscroll.min.self-3f2a21d7b7bce5e002fcfe476b55bb03104c57c8c4be56eb7e0525a5f3c8bfa8.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/bootstrap-datepicker.self-ac4c3c419f2735652eb73867c9882e2accabd9857e2c57c00b75d45f7c1f6b05.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/parsley.extend.self-cbf1955e0f359859712d9af7d62f06d83f5d016c87e8d0d2478f0b0e03b243d6.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/parsley.min.self-93ac44a59b12b8f4193de8a1207f96b7821b96273890e71764a0c999dee1ca1c.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-22 18:31:36 +0100
+
+
+Started GET "/assets/logo-a0363e9a7a2289a19df10c7d347d7bfbb2d8032c6e3dfec07c2d2f7977584ebc.png" for ::1 at 2015-06-22 18:31:36 +0100
