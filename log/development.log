@@ -25700,3 +25700,467 @@ Processing by OutstandingTransactionsController#index as HTML
   [1m[35mOutstandingTransaction Load (0.1ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')
   Rendered outstanding_transactions/index.html.erb within layouts/main (14.4ms)
 Completed 200 OK in 143ms (Views: 135.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2015-06-22 16:42:03 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (569.9ms)
+Completed 200 OK in 687ms (Views: 624.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2015-06-22 16:49:27 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gUszj9R3/rKzmxD4uOOo5jBlSfAuwItBWWFUH1savzjjmpe7wfrWk0IrXGVM6XYR+sm3kW9xjB/a4gfGkqwhWg==", "user"=>{"email"=>"timi@helloworld.ng", "password"=>"[FILTERED]"}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "timi@helloworld.ng"]]
+Completed 401 Unauthorized in 15ms
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gUszj9R3/rKzmxD4uOOo5jBlSfAuwItBWWFUH1savzjjmpe7wfrWk0IrXGVM6XYR+sm3kW9xjB/a4gfGkqwhWg==", "user"=>{"email"=>"timi@helloworld.ng", "password"=>"[FILTERED]"}}
+  Rendered devise/shared/_links.html.erb (3.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (129.0ms)
+Completed 200 OK in 237ms (Views: 137.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2015-06-22 16:49:39 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ff7hHMyihxOO9DsgdMZBVAGIs5aJrkXNckURZxulbNd3L0Uo2S+vMn9Ed72AzJ+jyyRN98gfQpPxxkK+0hPytQ==", "user"=>{"email"=>"timi@ordertolagos.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "timi@ordertolagos.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2015-06-20 03:36:44.450381"], ["current_sign_in_at", "2015-06-22 15:49:39.771920"], ["sign_in_count", 4], ["updated_at", "2015-06-22 15:49:39.773825"], ["id", 1]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/transactions
+Completed 302 Found in 117ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/transactions" for ::1 at 2015-06-22 16:49:39 +0100
+Processing by TransactionsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (1.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mTransaction Load (0.4ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 25 OFFSET 0
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 1 OFFSET 0[0m
+  Rendered transactions/index.html.erb within layouts/main (180.7ms)
+Completed 200 OK in 320ms (Views: 302.3ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 16:49:42 +0100
+Processing by OutstandingTransactionsController#index as */*
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.3ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (51.5ms)
+Completed 200 OK in 285ms (Views: 271.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 16:49:42 +0100
+Processing by OutstandingTransactionsController#index as */*
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.3ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.3ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (21.0ms)
+Completed 200 OK in 370ms (Views: 345.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/outstanding_transactions/4/settle_outstanding" for ::1 at 2015-06-22 16:49:45 +0100
+Processing by OutstandingTransactionsController#settle_outstanding as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mOutstandingTransaction Load (0.3ms)[0m  SELECT  "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = ? LIMIT 1[0m  [["name", "Debt Settlement"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "transactions" ("amount", "description", "kind", "date", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 4000.0], ["description", "To Pay him back for handling SGK shipping"], ["kind", "expense"], ["date", "2015-06-22"], ["category_id", 4], ["created_at", "2015-06-22 15:49:45.400445"], ["updated_at", "2015-06-22 15:49:45.400445"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "outstanding_transactions" SET "settled" = ?, "updated_at" = ? WHERE "outstanding_transactions"."id" = ?  [["settled", "t"], ["updated_at", "2015-06-22 15:49:45.404034"], ["id", 4]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/transactions
+Completed 302 Found in 25ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/transactions" for ::1 at 2015-06-22 16:49:45 +0100
+Processing by TransactionsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mTransaction Load (0.4ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 1 OFFSET 0[0m
+  Rendered transactions/index.html.erb within layouts/main (28.0ms)
+Completed 200 OK in 148ms (Views: 136.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 16:49:53 +0100
+Processing by OutstandingTransactionsController#index as */*
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.3ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (17.4ms)
+Completed 200 OK in 281ms (Views: 266.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 16:49:53 +0100
+Processing by OutstandingTransactionsController#index as */*
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.3ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.7ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.3ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (28.7ms)
+Completed 200 OK in 215ms (Views: 197.0ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/outstanding_transactions/6/settle_outstanding" for ::1 at 2015-06-22 16:49:57 +0100
+Processing by OutstandingTransactionsController#settle_outstanding as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mOutstandingTransaction Load (0.1ms)[0m  SELECT  "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."id" = ? LIMIT 1  [["id", "6"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = ? LIMIT 1[0m  [["name", "Debt Settlement"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "transactions" ("amount", "description", "kind", "date", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["amount", 6000.0], ["description", "To refund for unpurchased items."], ["kind", "expense"], ["date", "2015-06-22"], ["category_id", 4], ["created_at", "2015-06-22 15:49:57.421593"], ["updated_at", "2015-06-22 15:49:57.421593"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "outstanding_transactions" SET "settled" = ?, "updated_at" = ? WHERE "outstanding_transactions"."id" = ?  [["settled", "t"], ["updated_at", "2015-06-22 15:49:57.425003"], ["id", 6]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/transactions
+Completed 302 Found in 14ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/transactions" for ::1 at 2015-06-22 16:49:57 +0100
+Processing by TransactionsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mTransaction Load (0.3ms)[0m  [1mSELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mTransaction Load (0.2ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 1 OFFSET 0
+  Rendered transactions/index.html.erb within layouts/main (20.4ms)
+Completed 200 OK in 141ms (Views: 132.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 16:50:00 +0100
+Processing by OutstandingTransactionsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'[0m
+  [1m[35mOutstandingTransaction Load (0.1ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')
+  Rendered outstanding_transactions/index.html.erb within layouts/main (15.9ms)
+Completed 200 OK in 270ms (Views: 255.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 16:50:00 +0100
+Processing by OutstandingTransactionsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (1.3ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (0.2ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mOutstandingTransaction Load (0.3ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')
+  [1m[36mOutstandingTransaction Load (0.1ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'[0m
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')
+  Rendered outstanding_transactions/index.html.erb within layouts/main (32.4ms)
+Completed 200 OK in 226ms (Views: 203.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 17:05:05 +0100
+Processing by OutstandingTransactionsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (0.6ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions"
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.1ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')
+  [1m[36mOutstandingTransaction Load (0.1ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (50.3ms)
+Completed 500 Internal Server Error in 82ms
+
+ActionView::Template::Error (undefined local variable or method `new_outstanding_transaction_path' for #<#<Class:0x007fe1681896f0>:0x007fe1681a3be0>):
+    40: 	<section class="panel panel-default">
+    41: 		<header class="panel-heading">
+    42: 			Debts (Money We Owe)
+    43: 			<span class="pull-right"> <a href="<%= new_outstanding_transaction_path %>" data-toggle="modal" data-target="#formModal"  class="label label-success"> <i class="fa fa-plus"></i> Add New </a> </span>
+    44: 		</header>
+    45: 		<div class="table-responsive">
+    46: 			<table class="table table-striped b-t b-light">
+  app/views/outstanding_transactions/index.html.erb:43:in `_app_views_outstanding_transactions_index_html_erb__1832937769795085371_70303045453120'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (25.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (56.3ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 17:05:15 +0100
+Processing by OutstandingTransactionsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "income"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "expense"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "income"]]
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')[0m
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')[0m
+  Rendered outstanding_transactions/index.html.erb within layouts/main (21.9ms)
+Completed 200 OK in 172ms (Views: 145.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/outstanding_transactions/new" for ::1 at 2015-06-22 17:05:19 +0100
+Processing by OutstandingTransactionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered outstanding_transactions/_form.html.erb (26.8ms)
+  Rendered outstanding_transactions/new.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 47ms (Views: 40.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/outstanding_transactions" for ::1 at 2015-06-22 17:05:26 +0100
+Processing by OutstandingTransactionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ac+RtwLNsF4qnw31IjkTo8/JWTjdCU/ibIOk7LfKJFzTs6wb9xzWKiV2nXiAKlhUFqfWbg4ugZ1LcIp7xis9PA==", "outstanding_transaction"=>{"amount"=>"3333", "kind"=>"expense", "other_party"=>"Chuka", "description"=>"efewfewfew"}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "outstanding_transactions" ("amount", "description", "other_party", "kind", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["amount", 3333.0], ["description", "efewfewfew"], ["other_party", "Chuka"], ["kind", "expense"], ["created_at", "2015-06-22 16:05:26.957522"], ["updated_at", "2015-06-22 16:05:26.957522"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/outstanding_transactions
+Completed 302 Found in 21ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/outstanding_transactions" for ::1 at 2015-06-22 17:05:26 +0100
+Processing by OutstandingTransactionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mOutstandingTransaction Load (0.3ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'expense' AND settled = 'f')
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."settled" = 't'[0m
+  [1m[35mOutstandingTransaction Load (0.2ms)[0m  SELECT "outstanding_transactions".* FROM "outstanding_transactions" WHERE (kind = 'income' AND settled = 'f')
+  Rendered outstanding_transactions/index.html.erb within layouts/main (12.9ms)
+Completed 200 OK in 140ms (Views: 132.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/outstanding_transactions/7/settle_outstanding" for ::1 at 2015-06-22 17:05:30 +0100
+Processing by OutstandingTransactionsController#settle_outstanding as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mOutstandingTransaction Load (0.2ms)[0m  [1mSELECT  "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "outstanding_transactions".* FROM "outstanding_transactions" WHERE "outstanding_transactions"."id" = ? LIMIT 1[0m  [["id", "7"]]
+  [1m[35mCategory Load (0.7ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."name" = ? LIMIT 1  [["name", "Debt Settlement"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "transactions" ("amount", "description", "kind", "date", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["amount", 3333.0], ["description", "efewfewfew"], ["kind", "expense"], ["date", "2015-06-22"], ["category_id", 4], ["created_at", "2015-06-22 16:05:31.040722"], ["updated_at", "2015-06-22 16:05:31.040722"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "outstanding_transactions" SET "settled" = ?, "updated_at" = ? WHERE "outstanding_transactions"."id" = ?[0m  [["settled", "t"], ["updated_at", "2015-06-22 16:05:31.044087"], ["id", 7]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/transactions
+Completed 302 Found in 117ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/transactions" for ::1 at 2015-06-22 17:05:31 +0100
+Processing by TransactionsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35m (0.1ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("transactions"."amount") FROM "transactions" WHERE "transactions"."kind" = ?[0m  [["kind", "income"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'  [["kind", "expense"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT SUM("outstanding_transactions"."amount") FROM "outstanding_transactions" WHERE "outstanding_transactions"."kind" = ? AND "outstanding_transactions"."settled" = 'f'[0m  [["kind", "income"]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 25 OFFSET 0
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mTransaction Load (0.3ms)[0m  SELECT  "transactions".* FROM "transactions"  ORDER BY date DESC, id DESC LIMIT 1 OFFSET 0
+  Rendered transactions/index.html.erb within layouts/main (22.1ms)
+Completed 200 OK in 138ms (Views: 130.5ms | ActiveRecord: 1.9ms)
