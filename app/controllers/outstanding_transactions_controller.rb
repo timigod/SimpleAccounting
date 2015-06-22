@@ -22,7 +22,7 @@ class OutstandingTransactionsController < ApplicationController
     @outstanding_transaction = OutstandingTransaction.new(outstanding_transaction_params)
     respond_to do |format|
       if @outstanding_transaction.save
-        format.html { redirect_to outstanding_transactions_path, notice: '#{get_transaction_type} transaction was successfully created.' }
+        format.html { redirect_to outstanding_transactions_path, notice: 'Outstanding transaction transaction was successfully created.' }
         format.json { render :show, status: :created, location: @outstanding_transaction }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class OutstandingTransactionsController < ApplicationController
   def update
     respond_to do |format|
       if @outstanding_transaction.update(outstanding_transaction_params)
-        format.html { redirect_to outstanding_transactions_path, notice: '#{get_transaction_type} transaction was successfully updated.' }
+        format.html { redirect_to outstanding_transactions_path, notice: 'Outstanding transaction was successfully updated.' }
         format.json { render :show, status: :ok, location: @outstanding_transaction }
       else
         format.html { render :edit }
