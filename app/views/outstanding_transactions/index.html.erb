@@ -58,10 +58,7 @@
 						<td><%= number_to_currency(debt.amount, :unit => "₦") %></td>
 						<td><%= debt.description %></td>
 						<td><%= debt.other_party %></td>
-						<td> <%= form_tag settle_outstanding_outstanding_transaction_path(debt), method: :post do %>
-						<button class ="btn btn-link" type="submit" >
-							<i class="glyphicon glyphicon-ok text-success"></i> Settle
-						</button> <% end %> <a data-toggle="modal" href="<%= edit_outstanding_transaction_path(debt) %>" data-target="#formModal" style="margin: 10px"><i class="glyphicon glyphicon-pencil text-info"></i></a><a data-confirm="Are you sure you want to delete this Transaction" data-method="delete" href="outstanding_transactions/<%= debt.id %>"><i class="glyphicon glyphicon-trash text-danger"></i></a></td>
+						<td><a href="<%= settle_outstanding_outstanding_transaction_path(debt) %>"><i class="glyphicon glyphicon-ok text-success"></i></a><a data-toggle="modal" href="<%= edit_outstanding_transaction_path(debt) %>" data-target="#formModal" style="margin: 10px"><i class="glyphicon glyphicon-pencil text-info"></i></a><a data-confirm="Are you sure you want to delete this Transaction" data-method="delete" href="outstanding_transactions/<%= debt.id %>"><i class="glyphicon glyphicon-trash text-danger"></i></a></td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -120,13 +117,7 @@
 						<td><%= number_to_currency(credit.amount, :unit => "₦") %></td>
 						<td><%= credit.description.truncate(26) %></td>
 						<td><%= credit.other_party %></td>
-
-						<td> <%= form_tag settle_outstanding_outstanding_transaction_path(credit), method: :post do %>
-						<button class ="btn btn-link" type="submit" >
-							<i class="glyphicon glyphicon-ok text-success"></i> Settle
-						</button> <% end %> 
-						<a data-toggle="modal" href="<%= edit_outstanding_transaction_path(credit) %>" data-target="#formModal" style="margin: 10px"><i class="glyphicon glyphicon-pencil text-info"></i></a><a data-confirm="Are you sure you want to delete this Transaction" data-method="delete" href="outstanding_transactions/<%= credit.id %>"><i class="glyphicon glyphicon-trash text-danger"></i></a>
-						</td>
+						<td><a href="<%= settle_outstanding_outstanding_transaction_path(credit) %>"><i class="glyphicon glyphicon-ok text-success"></i></a><a data-toggle="modal" href="<%= edit_outstanding_transaction_path(credit) %>" data-target="#formModal" style="margin: 10px"><i class="glyphicon glyphicon-pencil text-info"></i></a><a data-confirm="Are you sure you want to delete this Transaction" data-method="delete" href="outstanding_transactions/<%= credit.id %>"><i class="glyphicon glyphicon-trash text-danger"></i></a></td>
 					</tr>
 					<% end %>
 				</tbody>
