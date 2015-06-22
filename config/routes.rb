@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :outstanding_transactions do
     member do
-      get :settle_outstanding
+      put :settle_outstanding
     end
   end
 
