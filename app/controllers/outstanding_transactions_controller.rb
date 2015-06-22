@@ -62,9 +62,8 @@ class OutstandingTransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save && @outstanding_transaction.save
         format.html { redirect_to transactions_path, notice: 'Transaction was successfully created and outstanding cleared' }
-        format.json { render "transactions#index", status: :created, location: @transaction }
       else
-        format.html { render "transactions#index"}
+        format.html { redirecto_to transactions_path}
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
