@@ -38,7 +38,8 @@
 <section class="panel panel-default">
 	<header class="panel-heading">
 		Transactions
-		<span class="pull-right"> <a style="margin:10px" href="<%= categories_path %>" class="label label-warning"> <i class="fa fa-cogs"></i> Manage Transaction Catedories </a> <a href="<%= new_transaction_path %>" data-toggle="modal" data-target="#formModal"  class="label label-success"> <i class="fa fa-plus"></i> Add New </a> </span>
+		<span class="pull-right"> <a style="margin:10px" href="<%= categories_path %>" class="label label-warning"> <i class="fa fa-cogs"></i> Manage Transaction Catedories </a>
+			 <a href="<%= new_transaction_path %>" data-toggle="modal" data-target="#formModal"  class="label label-success"> <i class="fa fa-plus"></i> Add New </a> </span>
 	</header>
 	<div class="table-responsive">
 		<table class="table table-striped b-t b-light">
@@ -86,14 +87,16 @@
 	</div>
 </div>
 
+<style>
+	.datepicker {
+		z-index: 1151 !important;
+	}
+</style>
 <script>
 	$(function() {
 		$('#formModal').on('hidden.bs.modal', function() {
 			$(this).removeData('bs.modal');
 		});
-		.datepicker {
-			z-index: 1151!important;
-		}
 	}); 
 </script>
 
