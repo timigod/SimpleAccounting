@@ -8,11 +8,6 @@
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
-		<!--[if lt IE 9]>
-		<script src="js/ie/html5shiv.js"></script>
-		<script src="js/ie/respond.min.js"></script>
-		<script src="js/ie/excanvas.js"></script>
-		<![endif]-->
 	</head>
 	<body class="" >
 		<script type="text/javascript">
@@ -36,14 +31,6 @@
 						<%= notice %>
 					</div>
 					<% end %>
-					<% if flash[:notice] %>
-					<div class="alert alert-danger">
-						<button type="button" class="close" data-dismiss="alert">
-							&times;
-						</button>
-						<%= flash[:notice] %>
-					</div>
-					<% end %>
 					<% if flash[:alert] %>
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert">
@@ -64,7 +51,6 @@
 					<button type="submit" class="btn btn-lg btn-primary btn-block">
 						Sign in
 					</button>
-					<%= render "devise/shared/links" %>
 					<% end -%>
 				</section>
 			</div>

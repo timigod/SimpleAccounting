@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    root 'devise/sessions#new'
+    root 'home#check'
   end
-  devise_for :users, controllers: { sessions: "sessions" }
+  devise_for :users, controllers: {sessions: "sessions"}
 
   resources :transactions
-
+  resources :first_time, :only => :index do
+    collection do
+      post :create_user
+    end
+  end
   resources :categories
 end
