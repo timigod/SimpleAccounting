@@ -1,41 +1,4 @@
-<footer class="panel-footer bg-white">
-	<div class="row text-center no-gutter">
-		<div class="col-xs-3 b-r b-light">
-			<p class="h3 <%= is_amount_in_the_red?(Transaction.money_in_hand) %> font-bold m-t">
-				<%= number_to_currency(Transaction.money_in_hand, :unit => "₦") %>
-			</p>
-			<p class="text-muted">
-				Money in hand
-			</p>
-		</div>
-		<div class="col-xs-3 b-r b-light">
-			<p class="h3 text-danger font-bold m-t">
-				<%= number_to_currency(OutstandingTransaction.total_debt, :unit => "₦") %>
-			</p>
-			<p class="text-muted">
-				Total Debt
-			</p>
-		</div>
-		<div class="col-xs-3 b-r b-light">
-			<p class="h3 text-success font-bold m-t">
-				<%= number_to_currency(OutstandingTransaction.total_credit, :unit => "₦") %>
-			</p>
-			<p class="text-muted">
-				Total Credit
-			</p>
-		</div>
-		<div class="col-xs-3">
-			<p class="h3 <%= is_amount_in_the_red?(Transaction.money_in_hand - OutstandingTransaction.net_outstanding) %> font-bold m-t">
-				<%= number_to_currency((Transaction.money_in_hand - OutstandingTransaction.net_outstanding), :unit => "₦") %>
-			</p>
-			<p class="text-muted">
-				Net Balance
-			</p>
-		</div>
-	</div>
-</footer>
-<br/>
-
+<%= render 'shared_partials/overview_block' %>
 <div class="col-sm-6">
 	<section class="panel panel-default">
 		<header class="panel-heading">

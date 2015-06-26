@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel b-a">
+      <div class="row m-n">
+        <div class="col-md-3 b-b b-r">
+          <a href="#" class="block padder-v hover">
+                              <span class="clear">
+                                <span class="h3 block m-t-xs <%= is_amount_in_the_red?(Transaction.money_in_hand) %> font-bold m-t">
+                                  <%= number_to_currency(Transaction.money_in_hand, :unit => "₦") %>
+                                </span>
+                                <small class="text-muted text-u-c">Money in hand</small>
+                              </span>
+          </a>
+        </div>
+        <div class="col-md-3 b-b b-r">
+          <a href="#" class="block padder-v hover">
+                              <span class="clear">
+                                <span class="h3 block m-t-xs text-danger font-bold m-t">
+                                  <%= number_to_currency(OutstandingTransaction.total_debt, :unit => "₦") %></span>
+                                <small class="text-muted text-u-c">Total Debt</small>
+                              </span>
+          </a>
+        </div>
+        <div class="col-md-3 b-b b-r">
+          <a href="#" class="block padder-v hover">
+                              <span class="clear">
+                                <span class="h3 block m-t-xs text-success font-bold m-t">
+                                 <%= number_to_currency(OutstandingTransaction.total_credit, :unit => "₦") %>
+                                </span>
+                                <small class="text-muted text-u-c">Total Credit</small>
+                              </span>
+          </a>
+        </div>
+        <div class="col-md-3 b-b">
+          <a href="#" class="block padder-v hover">
+                              <span class="clear">
+                                <span class="h3 block m-t-xs <%= is_amount_in_the_red?(Transaction.money_in_hand - OutstandingTransaction.net_outstanding) %> font-bold m-t">
+                                <%= number_to_currency((Transaction.money_in_hand - OutstandingTransaction.net_outstanding), :unit => "₦") %>
+                                </span>
+                                <small class="text-muted text-u-c">Net Balance</small>
+                              </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

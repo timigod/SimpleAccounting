@@ -14,6 +14,7 @@ gem "font-awesome-rails"
 gem "devise"
 gem 'cancancan'
 gem 'will_paginate'
+gem 'nprogress-rails'
 
 group :development, :test do
   gem 'byebug'
