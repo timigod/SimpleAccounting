@@ -20,6 +20,10 @@ $ bundle install
 $ rake db:setup
 $ rails server
 ```
+
+The rails app should now be running. Just navigate to localhost:3000 in your browser. Easy-peasy.
+
+
 If you want to host this online, here are a few services (with tutorials) you can use.
 * [Heroku](https://devcenter.heroku.com/articles/getting-started-with-rails4)
 * [ShellyCloud](https://shellycloud.com/documentation/quick_start)
