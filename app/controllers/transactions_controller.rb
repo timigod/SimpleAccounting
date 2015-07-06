@@ -33,7 +33,6 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction.
         respond_to do |format|
       if @transaction.update(transaction_params)
         format.html { redirect_to transactions_path, notice: 'Transaction was successfully updated.' }
